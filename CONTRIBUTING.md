@@ -1,6 +1,6 @@
 # Contributing to RMM
 
-If you are interested in contributing to cuDF, your contributions will fall
+If you are interested in contributing to RMM, your contributions will fall
 into three categories:
 1. You want to report a bug, feature request, or documentation issue
     - File an [issue](https://github.com/rapidsai/rmm/issues/new/choose)
@@ -22,7 +22,7 @@ into three categories:
 
 ### Your first issue
 
-1. Read the project's [README.md](https://github.com/rapidsai/rmm/blob/master/README.md)
+1. Read the project's [README.md](https://github.com/rapidsai/rmm/blob/main/README.md)
     to learn how to setup the development environment
 2. Find an issue to work on. The best way is to look for the [good first issue](https://github.com/rapidsai/rmm/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
     or [help wanted](https://github.com/rapidsai/rmm/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) labels
@@ -31,8 +31,15 @@ into three categories:
 5. When done, [create your pull request](https://github.com/rapidsai/rmm/compare)
 6. Verify that CI passes all [status checks](https://help.github.com/articles/about-status-checks/). Fix if needed
 7. Wait for other developers to review your code and update code as needed
-8. Once reviewed and approved, a RAPIDS developer will merge your pull request
+8. Once reviewed and approved, a RAPIDS developer will merge your pull request. Note that for C++ code, two reviewers
+are required.
 
+To set up a development environment, follow the steps in the [README](https://github.com/rapidsai/rmm/blob/main/README.md) for cloning the repository and creating the conda environment.
+Once the environment is created, you can build and install RMM using
+```bash
+$ python -m pip install ./python/rmm
+```
+This command will build the RMM Python library inside the clone and automatically make it importable when running Python anywhere on your machine.
 Remember, if you are unsure about anything, don't hesitate to comment on issues
 and ask for clarifications!
 
@@ -48,11 +55,6 @@ Look at the unassigned issues, and find an issue you are comfortable with
 contributing to. Start with _Step 3_ from above, commenting on the issue to let
 others know you are working on it. If you have any questions related to the
 implementation of the issue, ask them in the issue instead of the PR.
-
-### Building and Testing on a gpuCI image locally
-
- Before submitting a pull request, you can do a local build and test on your machine that mimics our gpuCI environment using the `ci/local/build.sh` script.
-For detailed information on usage of this script, see [here](ci/local/README.md).
 
 ## Attribution
 Portions adopted from https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md

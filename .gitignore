@@ -14,18 +14,26 @@ DartConfiguration.tcl
 .DS_Store
 *.manifest
 *.spec
+compile_commands.json
 
 ## Python build directories & artifacts
 dist/
 rmm.egg-info/
 python/build
 python/*/build
-python/rmm/**/_lib/**/*.cpp
-python/rmm/**/_lib/**/*.h
-python/rmm/**/_lib/.nfs*
+python/rmm/rmm/librmm/*.cpp
+!python/rmm/rmm/librmm/_torch_allocator.cpp
+python/rmm/**/librmm/**/*.h
+python/rmm/**/librmm/.nfs*
+python/rmm/**/pylibrmm/**/*.cpp
+python/rmm/**/pylibrmm/**/*.h
+python/rmm/**/pylibrmm/.nfs*
+python/rmm/_cuda/*.cpp
+python/rmm/tests/*.cpp
 python/rmm/*.ipynb
 python/rmm/.ipynb_checkpoints
 python/*/record.txt
+python/record.txt
 .Python
 env/
 develop-eggs/
@@ -43,6 +51,12 @@ wheels/
 *.egg
 pip-log.txt
 pip-delete-this-directory.txt
+
+# Ignore dynamically generated .pxd files
+python/rmm/_cuda/gpu.pxd
+
+# Ignore _skbuild directory
+_skbuild/
 
 # Unit test / coverage reports
 htmlcov/
@@ -64,8 +78,8 @@ coverage.xml
 CMakeFiles/
 Debug
 build/
+RelWithDebInfo/
 thirdparty/googletest/
-include/rmm/detail/cnmem.h
 
 ## Eclipse IDE
 .project
@@ -79,8 +93,10 @@ include/rmm/detail/cnmem.h
 *.ipr
 *.iws
 
-## Doxygen
-doxygen/html
+## Documentation
+cpp/doxygen/html
+cpp/doxygen/xml
+docs/_build
 
 #Java
 target
@@ -99,9 +115,6 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-
-# Sphinx documentation
-docs/_build/
 
 # PyBuilder
 target/
@@ -138,3 +151,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# cibuildwheel
+/wheelhouse
+
+# clang tooling
+compile_commands.json
+.clangd/
